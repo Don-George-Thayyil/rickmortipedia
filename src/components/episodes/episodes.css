@@ -1,0 +1,12 @@
+.episodes-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #00000080;
+    border-radius: 2rem;
+    overflow-y: scroll;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding: 2rem 1rem;
+}

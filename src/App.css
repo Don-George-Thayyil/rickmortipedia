@@ -1,0 +1,43 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  row-gap:1rem;
+}
+
+.App-header {
+  width:100%;
+  height:10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.nav-item{
+  font-size:1.2rem;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #ffffff30;
+  padding:1rem;
+  border-radius: 2rem;
+  margin:1rem;
+}
+.nav-item:hover{
+  cursor: pointer;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
+
+.selected-item{
+color: orange;
+}

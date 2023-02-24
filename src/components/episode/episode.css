@@ -1,0 +1,28 @@
+.episodes-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    
+    padding:2rem;
+    color:white;
+    width:55%;
+}
+
+.char-div{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap:3rem;
+    overflow-y:scroll;
+    max-height:50vh;
+}
+
+.character-name{
+    font-size:2rem;
+}
+
+.aired{
+    font-size:2rem;
+}
+
+.l-name{
+    font-size:1.3rem;
+}
