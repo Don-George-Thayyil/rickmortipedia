@@ -9,6 +9,7 @@ const Characters = () => {
   const [page, setPage] = React.useState(1);
   const [gender, setGender] = React.useState("");
   const [status, setStatus] = React.useState("");
+  const [pages, setPages] = React.useState(0);
   const [pagination, setPagination] = React.useState([]);
 
   const { error, data, loading } = useCharacters(
@@ -22,15 +23,31 @@ const Characters = () => {
   React.useEffect(() => {
     if (data) {
       Pagination(page);
+      setPages(data.characters.info.pages);
+      console.log(data.characters.info.pages)
     }
   }, [data]);
 
   const Pagination = (page) => {
-    if (page < 4) setPagination([2, 3, 4, 5]);
-    else if (page > 39) setPagination([38, 39, 40, 41]);
-    else {
-      setPagination([page - 2, page - 1, page, page + 1, page + 2]);
-    }
+    let prevTwice = 0
+    let prevOnce = 0
+    let forOnce = 0
+    let forTwice = 0
+    let current = page;
+    prevTwice = page - 2 
+    prevOnce = page - 1 
+    forTwice = page + 2 
+    forOnce = page + 1 
+
+    if (prevTwice)
+
+      setPagination([prevTwice, prevOnce, current, forOnce, forTwice])
+
+    // if (page < 4) setPagination([2, 3, 4, 5]);
+    // else if (page > 39) setPagination([38, 39, 40, 41]);
+    // else {
+    //   setPagination([page - 2, page - 1, page, page + 1, page + 2]);
+    // }
   };
 
   return (
@@ -90,7 +107,7 @@ const Characters = () => {
         {data?.characters.results.map((item, index) => {
           return (
             <div className="character-element" key={index}>
-              <Link style={{textDecoration:"none"}} to={`character/${item.id}`}>
+              <Link style={{ textDecoration: "none" }} to={`character/${item.id}`}>
                 <img className="image" src={item.image} />
                 <div className="name">{item.name}</div>
               </Link>
@@ -109,7 +126,7 @@ const Characters = () => {
           <div className={page > 4 ? null : "hidden"}>...</div>
           {pagination.map((item, index) => {
             return (
-              <div
+              (item>1 && item<pages) && <div
                 className={item == page ? "coloredNum" : "pageHover"}
                 onClick={() => setPage(item)}
                 key={index}
@@ -118,10 +135,10 @@ const Characters = () => {
               </div>
             );
           })}
-          <div className={page > 38 ? "hidden" : null}>...</div>
+          <div className={page > pages-4 ? "hidden" : null}>...</div>
           <div
-            className={page == 42 ? "coloredNum" : "pageHover"}
-            onClick={() => setPage(42)}
+            className={page == pages ? "coloredNum" : "pageHover"}
+            onClick={() => setPage(pages)}
           >
             {data?.characters.info.pages}
           </div>

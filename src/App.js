@@ -9,40 +9,26 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        {currentPage==="characters"?<div
-          className={`nav-item selected-item`}
-          onClick={() => {
-            setCurrentPage("characters");
 
-          }}>
-          Characters
-        </div>:
         <div
-          className={`nav-item`}
+          className={currentPage=="characters"?`nav-item selected-item`:"nav-item"}
           onClick={() => {
             setCurrentPage("characters");
 
           }}>
           Characters
-        </div>}
+        </div>
         
-        {currentPage==="episodes"?<div
-          className={`nav-item selected-item`}
-          onClick={() => {
-            setCurrentPage("episodes");
-
-          }}>
-          Episodes
-        </div>:
         <div
-          className={`nav-item`}
+          className={currentPage=="episodes"?`nav-item selected-item`:"nav-item"}
           onClick={() => {
             setCurrentPage("episodes");
 
           }}>
           Episodes
-        </div>}
+        </div>
       </div>
+      
       <div className="container">
         {currentPage === "characters" ? <Characters /> : <Episodes/>}
       </div>
